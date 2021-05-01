@@ -1,0 +1,857 @@
+#container{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 15px;
+    margin: 20px;
+    justify-content: center;
+}
+
+#level-2-container{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 15px;
+    margin: 20px;
+    justify-content: center;
+}
+
+.game-info-container, .level2-game-info-container{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-info, .lives{
+    color: blue;
+    font-size: 2em;
+}
+
+.level2-game-info, .level2-lives{
+    color: red;
+    font-size: 2em;
+}
+
+.card{
+    height: 175px;
+    width: 125px;
+}
+
+.card-front, .card-back{
+    position: absolute;
+    height: 175px;
+    width: 125px;
+    backface-visibility: hidden;
+}
+
+.card-front{
+    transform: rotateY(0deg);
+}
+
+.card-back{
+    transform: rotateY(180deg);
+    background-color: navy;
+}
+
+#level1{
+    background-color: skyblue;
+}
+
+#level2{
+    background-color: rgb(255, 204, 203);
+}
+
+.cards{
+    height: 200px;
+    width: 125px;
+}
+
+.cards-front, .cards-back{
+    position: absolute;
+    width: 200px;
+    height: 125px;
+    backface-visibility: hidden;
+}
+
+.cards-front img{
+    height: 200px;
+    width: 125px;
+    background-color: red;
+}
+
+.cards-back img{
+    height: 200px;
+    width: 125px;
+}
+
+.cards-front{
+    transform: rotateY(0deg);
+}
+
+.cards-back{
+    transform: rotateY(180deg);
+    background-color: red;
+}
+
+#home{
+    margin-left: 20px;
+}
+
+.card:hover {
+    cursor: pointer;
+    border: 3px solid skyblue;
+}  
+
+.card-back img{
+    height: 175px;
+    width: 125px;
+}
+
+.card-front img{
+    height: 175px;
+    width: 125px;
+}
+
+.cards:hover{
+    cursor: pointer;
+    border: 3px solid rgb(255, 204, 203);
+}
+
+.flip-card{
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+    transition: 2.5s;
+}
+
+.flip-card-back{
+    transform-style: preserve-3d;
+    transform: rotateY(360deg);
+    transition: 2s;
+}
+
+.heart, .heart2, .level2-heart, .level2-heart2, .level2-heart3{
+    height: 50px;
+    width: 50px;
+    position: relative;
+}
+
+.whiteHeart, .whiteHeart2, .level2-whiteHeart, .level2-whiteHeart2, .level2-whiteHeart3{
+    height: 55px;
+    width: 55px;
+    position: relative;
+}
+
+.reload{
+    width: 405px !important;
+    left: 35%;
+}
+
+.overlay-text, .overlay-text-result{
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    right: 0%;
+    bottom: 5%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: blue;
+}
+
+.level2-overlay-text, .level2-overlay-text-result{
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    right: 0%;
+    bottom: 20%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #8B0000;
+}
+
+.overlay-text.visible, .overlay-text-result.visible, .level2-overlay-text-result.visible{
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+}
+
+.level2-overlay-text.visible{
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow{
+    from{
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to{
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
+}
+/*
+@media screen and (max-width: 400px) { 
+    .overlay-text, .overlay-text-result{
+        top: 5.2%;
+        bottom: 43%;
+    }
+
+    .level2-overlay-text, .level2-overlay-text-result{
+        top: 5.2%;
+        bottom: 40.1%;
+    }
+
+    #container{
+        grid-gap: 10px;
+        margin: 15px;
+    }
+
+    .card{
+        height: 95px;
+        width: 65px;
+    }
+
+    .cards{
+        height: 95px;
+        width: 65px;
+    }
+
+    .heart, .heart2{
+        height: 20px;
+        width: 20px;
+    }
+
+    .level2-heart, .level2-heart2, .level2-heart3{
+        height: 20px;
+        width: 20px;
+    }
+    
+    .whiteHeart, .whiteHeart2{
+        height: 25px;
+        width: 25px;
+    }
+
+    .level2-whiteHeart, .level2-whiteHeart2, .level2-whiteHeart3{
+        height: 25px;
+        width: 25px;
+    }
+    
+    .game-info, .lives{
+        font-size: 20px;
+    }
+
+    .level2-game-info, .level2-lives{
+        font-size: 18px;
+    }
+
+    .card img{
+        height: 95px;
+        width: 65px;
+    }
+
+    .cards img{
+        height: 95px;
+        width: 65px;
+    }
+
+    .card-front, .card-back{
+        height: 95px;
+        width: 65px;
+    }
+
+    .cards-front, .cards-back{
+        height: 95px;
+        width: 65px;
+    }
+    
+    .reload{
+        width: 60% !important;
+        left: 18%;
+    }
+
+    @keyframes overlay-grow{
+        from{
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 0;
+        }
+        to{
+            background-color: rgba(0, 0, 0, .8);
+            font-size: 4em;
+        }
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px) { 
+    .overlay-text{
+        top: 5.2%;
+        bottom: 35.2%;
+    }
+
+    .overlay-text-result{
+        top: 5.2%;
+        bottom: 34.6%;
+    }
+
+    .level2-overlay-text{
+        top: 5.2%;
+        bottom: 31.3%;
+    }
+
+    .level2-overlay-text-result{
+        top: 5.2%;
+        bottom: 30.7%;
+    }
+
+    #container{
+        grid-gap: 10px;
+        margin: 15px;
+    }
+
+    .card{
+        height: 115px;
+        width: 85px;
+    }
+
+    .cards{
+        height: 115px;
+        width: 85px;
+    }
+
+    .heart, .heart2, .level2-heart, .level2-heart2, .level2-heart3{
+        height: 30px;
+        width: 30px;
+    }
+
+    .whiteHeart, .whiteHeart2, .level2-whiteHeart, .level2-whiteHeart2, .level2-whiteHeart3{
+        height: 35px;
+        width: 35px;
+    }
+    
+    .game-info, .lives{
+        font-size: 20px;
+    }
+
+    .level2-game-info, .level2-lives{
+        font-size: 23px;
+    }
+
+    .card img{
+        height: 115px;
+        width: 85px;
+    }
+
+    .cards img{
+        height: 115px;
+        width: 85px;
+    }
+
+    .card-front, .card-back, .cards-front, .cards-back{
+        height: 115px;
+        width: 85px;
+    }
+    
+    .reload{
+        width: 48.8% !important;
+        left: 24.5%;
+    }
+
+    .level2-reload{
+        width: 68% !important;
+        left: 15%;
+    }
+
+    @keyframes overlay-grow{
+        from{
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 0;
+        }
+        to{
+            background-color: rgba(0, 0, 0, .8);
+            font-size: 4em;
+        }
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px){
+    .overlay-text, .level2-overlay-text{
+        top: 5.2%;
+        bottom: 12.3%;
+    }
+
+    .overlay-text-result, .level2-overlay-text-result{
+        top: 5.2%;
+        bottom: 11.8%;
+    }
+
+    #container{
+        grid-gap: 15px;
+        margin: 20px;
+    }
+
+    .card{
+        height: 160px;
+        width: 120px;
+    }
+
+    .cards{
+        height: 160px;
+        width: 120px;
+    }
+
+    .heart, .heart2, .level2-heart, .level2-heart2, .level2-heart3{
+        height: 40px;
+        width: 40px;
+    }
+
+    .whiteHeart, .whiteHeart2, .level2-whiteHeart, .level2-whiteHeart2, .level2-whiteHeart3{
+        height: 45px;
+        width: 45px;
+    }
+    
+    .game-info, .lives{
+        font-size: 30px;
+    }
+
+    .level2-game-info, .level2-lives{
+        font-size: 30px;
+    }
+
+    .card img{
+        height: 160px;
+        width: 120px;
+    }
+
+    .cards img{
+        height: 160px;
+        width: 120px;
+    }
+
+    .card-front, .card-back, .cards-front, .cards-back{
+        height: 160px;
+        width: 120px;
+    }
+    
+    .reload{
+        width: 46% !important;
+        left: 26%;
+    }
+
+    .level2-reload{
+        width: 68% !important;
+        left: 15%;
+    }
+
+    @keyframes overlay-grow{
+        from{
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 0;
+        }
+        to{
+            background-color: rgba(0, 0, 0, .8);
+            font-size: 8em;
+        }
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px){
+    #container{
+        grid-gap: 15px;
+        margin: 10px;
+    }
+
+    #level-2-container{
+        grid-gap: 15px;
+        margin: 9.5px;
+    }
+
+    .overlay-text, .overlay-text-result, .level2-overlay-text{
+        top: 5.2%;
+        bottom: 12.3%;
+    }
+
+    .level2-overlay-text-result{
+        top: 5.2%;
+        bottom: 10.5%;
+    }
+
+    .card{
+        height: 167px;
+        width: 125px;
+    }
+
+    .cards{
+        height: 167px;
+        width: 125px;
+    }
+
+    .card-front, .card-back{
+        height: 167px;
+        width: 125px;
+    }
+
+    .cards-front, .cards-back{
+        height: 167px;
+        width: 125px;
+    }
+
+    .heart, .heart2{
+        height: 38px;
+        width: 38px;
+    }
+
+    .level2-heart, .level2-heart2, .level2-heart3{
+        height: 40px;
+        width: 40px;
+    }
+    
+    .whiteHeart, .whiteHeart2{
+        height: 40px;
+        width: 40px;
+    }
+    
+    .game-info, .lives{
+        font-size: 30px;
+    }
+
+    .level2-game-info, .level2-lives{
+        font-size: 30px;
+    }
+
+    .card img{
+        height: 167px;
+        width: 125px;
+    }
+
+    .cards img{
+        height: 167px;
+        width: 125px;
+    }
+
+    .reload{
+        width: 35% !important;
+        left: 32%;
+    }
+
+    .level2-reload{
+        width: 47% !important;
+        left: 26%;
+    }
+}
+
+@media screen and (min-width:1200px) and (max-width: 1600px){
+    .overlay-text{
+        top: 4.3%;
+        bottom: 14.5%;
+    }
+
+    .overlay-text-result{
+        top: 4.3%;
+        bottom: 14%
+    }
+
+    .level2-overlay-text{
+        top: 4.3%;
+        bottom: 15%;
+    }
+
+    .level2-overlay-text-result{
+        top: 4.3%;
+        bottom: 30%;
+    }
+
+    .card{
+        height: 200px;
+        width: 150px;
+    }
+
+    .cards{
+        height: 200px;
+        width: 150px;
+    }
+
+    .heart, .heart2{
+        height: 50px;
+        width: 50px;
+    }
+    
+    .whiteHeart, .whiteHeart2{
+        height: 55px;
+        width: 55px;
+    }
+    
+    .game-info, .lives{
+        font-size: 35px;
+    }
+
+    .card img{
+        height: 200px;
+        width: 150px;
+    }
+
+    .reload{
+        width: 480px !important;
+        left: 35%;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .overlay-text{
+        top: 4.3%;
+        bottom: 14.6%;
+    }
+
+    .overlay-text-result{
+        top: 4.3%;
+        bottom: 14%
+    }
+
+    .level2-overlay-text{
+        top: 4.3%;
+        bottom: 15%;
+    }
+
+    .level2-overlay-text-result{
+        top: 4.3%;
+        bottom: 14.5%;
+    }
+
+    .card{
+        height: 200px;
+        width: 150px;
+    }
+
+    .cards{
+        height: 200px;
+        width: 150px;
+    }
+
+    .heart, .heart2{
+        height: 50px;
+        width: 50px;
+    }
+    
+    .whiteHeart, .whiteHeart2{
+        height: 55px;
+        width: 55px;
+    }
+    
+    .game-info, .lives{
+        font-size: 35px;
+    }
+
+    .card img{
+        height: 200px;
+        width: 150px;
+    }
+
+    .reload{
+        width: 480px !important;
+        left: 37%;
+    }
+}
+*/
+/* ----------- iPhone 4 and 4S ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    #container{
+        grid-gap: 5px;
+        margin: 10px;
+    }
+
+    .card{
+        height: 125px;
+        width: 100px;
+    }
+
+    .heart, .heart2{
+        height: 40px;
+        width: 40px;
+    }
+    
+    .whiteHeart, .whiteHeart2{
+        height: 45px;
+        width: 45px;
+    }
+    
+    .game-info, .lives{
+        font-size: 25px;
+    }
+
+    .card img{
+        height: 125px;
+        width: 100px;
+    }
+
+    .overlay-text, .overlay-text-result, .level2-overlay-text{
+        top: 6.2%;
+        bottom: 18%;
+    }
+
+    .overlay-text.visible, .overlay-text-result.visible{
+        animation: overlay-grow 500ms forwards;
+    }
+    
+    .level2-overlay-text.visible{
+        display: flex;
+        flex-direction: column;
+        animation: overlay-grow 500ms forwards;
+    }
+    
+    @keyframes overlay-grow{
+        from{
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 0;
+        }
+        to{
+            background-color: rgba(0, 0, 0, .8);
+            font-size: 3em;
+        }
+    }
+
+    .reload{
+        width: 320px !important;
+        left: 1%;
+    }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) { 
+        #container{
+            grid-gap: 5px;
+            margin: 10px;
+        }
+    
+        .card{
+            height: 125px;
+            width: 100px;
+        }
+    
+        .heart, .heart2{
+            height: 40px;
+            width: 40px;
+        }
+        
+        .whiteHeart, .whiteHeart2{
+            height: 45px;
+            width: 45px;
+        }
+        
+        .game-info, .lives{
+            font-size: 25px;
+        }
+    
+        .card img{
+            height: 125px;
+            width: 100px;
+        }
+    
+        .overlay-text, .overlay-text-result, .level2-overlay-text{
+            top: 6%;
+            bottom: 25.8%;
+        }
+    
+        .overlay-text.visible, .overlay-text-result.visible{
+            animation: overlay-grow 500ms forwards;
+        }
+        
+        .level2-overlay-text.visible{
+            display: flex;
+            flex-direction: column;
+            animation: overlay-grow 500ms forwards;
+        }
+        
+        @keyframes overlay-grow{
+            from{
+                background-color: rgba(0, 0, 0, 0);
+                font-size: 0;
+            }
+            to{
+                background-color: rgba(0, 0, 0, .8);
+                font-size: 3em;
+            }
+        }
+    
+        .reload{
+            width: 320px !important;
+            left: 5%;
+        }
+}
+
+/* ----------- Galaxy S4, S5 and Note 3 ----------- */
+/* Portrait and Landscape */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+
+    .overlay-text, .overlay-text-result{
+        top: 5%;
+        left: 0%;
+        right: 0%;
+        bottom: 5%;
+    }
+
+    .card{
+        height: 150px;
+        width: 100px;
+    }
+
+    .card-front, .card-back{
+        height: 150px;
+        width: 100px;
+    }
+    
+    .card-back img{
+        height: 150px;
+        width: 100px;
+    }
+
+    .card-front img{
+        height: 150px;
+        width: 100px;
+    }
+
+    .heart, .heart2, .level2-heart, .level2-heart2, .level2-heart3{
+        height: 30px;
+        width: 30px;
+    }
+
+    .whiteHeart, .whiteHeart2, .level2-whiteHeart, .level2-whiteHeart2, .level2-whiteHeart3{
+        height: 35px;
+        width: 35px;
+    }
+
+    .overlay-text.visible, .overlay-text-result.visible, .level2-overlay-text-result.visible{
+        display: flex;
+        flex-direction: column;
+        animation: overlay-grow 500ms forwards;
+    }
+
+    @keyframes overlay-grow{
+        from{
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 0;
+        }
+        to{
+            background-color: rgba(0, 0, 0, .8);
+            font-size: 1em;
+        }
+    }
+}
